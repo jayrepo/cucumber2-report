@@ -1,0 +1,53 @@
+<section class="main container">
+  <div class="main">
+  {{#features}}
+  <article class="card mb-3" status="{{status}}">
+    <div class="card-header text-muted">
+      <span>{{tagStr}}</span>
+      <small class="float-right">{{time}}</small>
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">{{keyword}}: {{name}}</h4>
+      <p class="card-text">{{description}}</p>
+    </div>
+      {{#elements}}
+      <header class="scenario {{status}}">
+        <small class="float-right text-muted">{{tagStr}}</small>
+        <span>{{keyword}}: {{name}}</span>
+      </header>
+      <section class="steps hidden">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Dur</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#steps}}
+            <tr class="step {{status}}">
+              <td>{{keyword}}{{name}}</td>
+              <td>{{time}}</td>
+              <td>{{status}}</td>
+            </tr>
+            {{#json}}
+            {{> link_table}}
+            {{/json}}
+            {{#result.error_message}}
+              <tr class="hidden table-danger">
+                <td class="trace" colspan="3">
+                  {{#image}}<img class="img-fluid" src="./screenshot/{{image}}.png">{{/image}}
+                  <pre class="pre-scrollable"><code>{{result.error_message}}</code></pre>
+                </td>
+              </tr>
+	          {{/result.error_message}}
+            {{/steps}}
+          </tbody>
+        </table>
+      </section>
+    {{/elements}}
+  </article>
+  {{/features}}
+  </div>
+</section>

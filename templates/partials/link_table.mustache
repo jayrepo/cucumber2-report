@@ -1,0 +1,29 @@
+<tr class="hidden {{result.status}}">
+  <td colspan="3">
+  <ul class="nav nav-tabs">
+    <li class="nav-item total">
+      <a class="nav-link" href="#">Total: {{total}}</a>
+    </li>
+    <li class="nav-item fail">
+      <a class="nav-link active" href="#">Failed: {{failed}}</a>
+    </li>
+  </ul>
+
+  <table class="table table-sm link-table">
+    <thead>
+      <tr class="header-row">
+        <th>Code</th>
+        <th>URL</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  {{#results}}
+    <tr class="{{status}}">
+      <td>{{code}}</td>
+      <td><a target="_blank" href="{{{url}}}">{{{url}}}<a></td>
+      <td class="status">{{status}}</td>
+    </tr>
+  {{/results}}
+  </table>
+  </td>
+</tr>
